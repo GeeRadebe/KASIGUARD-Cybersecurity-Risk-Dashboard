@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KasiGuard | SME Cyber Risk Engine</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void: #000000;
+  --titanium: #E0E0E0;
+  --cyber-red: #FF003C;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--void);
+  color: var(--titanium);
+  font-family: 'Syne', system-ui;
+  padding: 40px 20px;
+}
+header {
+  text-align: center; margin-bottom: 60px;
+}
+header h1 { font-size: 3.4rem; font-weight: 800; letter-spacing: -0.05em; }
+.subtitle { font-family: 'DM Mono'; color: #777; font-size: 1.15rem; }
+
+.dashboard {
+  max-width: 1100px; margin: 0 auto; background: #0a0a0a; border: 2px solid #222; padding: 48px;
+}
+.gauge-container {
+  text-align: center; margin: 40px 0;
+}
+.gauge {
+  width: 220px; height: 220px; border-radius: 50%; margin: 0 auto;
+  background: conic-gradient(var(--cyber-red) 0deg 240deg, #222 240deg 360deg);
+  display: flex; align-items: center; justify-content: center; position: relative;
+  font-size: 3.5rem; font-weight: 800; color: var(--cyber-red);
+}
+.gauge::after {
+  content: '67'; position: absolute; font-size: 1.1rem; top: 50%; transform: translateY(-50%);
+}
+.risk-label { margin-top: 12px; font-family: 'DM Mono'; color: #ff6666; font-size: 1.1rem; }
+
+.log {
+  background: #000; border: 1px solid #222; padding: 20px; height: 260px; overflow-y: auto;
+  font-family: 'DM Mono'; font-size: 0.85rem; color: #0f0; line-height: 1.6;
+  margin-top: 40px;
+}
+.log-line { margin-bottom: 6px; opacity: 0; animation: fadeIn 0.6s forwards; }
+@keyframes fadeIn { to { opacity: 1; } }
+
+.controls {
+  margin-top: 40px; text-align: center;
+}
+.btn {
+  padding: 14px 42px; background: var(--cyber-red); color: #000; border: none;
+  font-weight: 700; letter-spacing: 0.08em; cursor: pointer;
+}
+.btn:hover { background: #ff3366; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>KASIGUARD</h1>
+  <div class="subtitle">SME Cybersecurity Risk Assessment Engine • Powered by Power Platform</div>
+</header>
+
+<div class="dashboard">
+  <h2 style="text-align:center; margin-bottom:32px;">Current Security Posture</h2>
+  
+  <div class="gauge-container">
+    <div class="gauge">67</div>
+    <div class="risk-label">ELEVATED RISK • ACTION REQUIRED</div>
+  </div>
+
+  <div style="margin:40px 0; color:#aaa; text-align:center;">
+    Weighted Adversarial Impact Score<br>
+    <strong>MFA: FAIL • Patch Management: PARTIAL • Backup: GOOD</strong>
+  </div>
+
+  <div class="log" id="log">
+    <div class="log-line">[14:22] Initializing risk matrix...</div>
+    <div class="log-line">[14:23] MFA status: DISABLED → Exponential penalty applied</div>
+    <div class="log-line">[14:24] External exposure detected on port 3389</div>
+    <div class="log-line">[14:25] Pulling threat intel from external sources...</div>
+    <div class="log-line">[14:26] Generating mitigation report via Power Automate...</div>
+    <div class="log-line" style="color:#ffaa00;">[14:27] REPORT READY FOR DOWNLOAD</div>
+  </div>
+
+  <div class="controls">
+    <button class="btn" onclick="runAssessment()">RUN FULL ASSESSMENT</button>
+  </div>
+</div>
+
+<footer style="text-align:center; margin-top:80px; color:#555; font-family:'DM Mono'; font-size:0.8rem;">
+  KasiGuard v1.0 • Built for South African SMEs • Tefo Radebe @ T⁴Tech Solutions<br>
+  <a href="../" style="color:var(--cyber-red); text-decoration:none;">← Back to Main Portfolio</a>
+</footer>
+
+<script>
+function runAssessment() {
+  const log = document.getElementById('log');
+  const newLine = document.createElement('div');
+  newLine.className = 'log-line';
+  newLine.style.color = '#00cc88';
+  newLine.textContent = `[${new Date().toLocaleTimeString()}] Re-scanning environment... Score updated.`;
+  log.appendChild(newLine);
+  log.scrollTop = log.scrollHeight;
+}
+</script>
+</body>
+  </html>
